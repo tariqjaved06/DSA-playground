@@ -6,7 +6,7 @@ struct Node {
   Node *nextNode;
 };
 
-void transverse(Node *head) {
+void traverse(Node *head) {
   for (Node *temp = head; temp != nullptr; temp = temp->nextNode) {
     cout << "[" << temp->Data << "] -> ";
   }
@@ -31,7 +31,7 @@ int main() {
   third->nextNode = nullptr;
 
   heading("Original Linked List");
-  transverse(head);
+  traverse(head);
 
   // Insertion at the end
   heading("Insertion at the End");
@@ -41,13 +41,13 @@ int main() {
   }
   temp->nextNode = fourth;
   fourth->nextNode = nullptr;
-  transverse(head);
+  traverse(head);
 
   // Insertion at the Start
   heading("Insertion at the Start");
   first->nextNode = head;
   head = first;
-  transverse(head);
+  traverse(head);
 
   // Insertion at a Fixed Position
   heading("Insertion at a Fixed Position");
@@ -64,7 +64,7 @@ int main() {
   } else {
     position->nextNode = temp->nextNode;
     temp->nextNode = position;
-    transverse(head);
+    traverse(head);
   }
 
   // Deletion at the end
@@ -75,14 +75,14 @@ int main() {
   }
   delete temp->nextNode;    // 1) free the last node FIRST
   temp->nextNode = nullptr; // 2) then cut the link
-  transverse(head);
+  traverse(head);
 
   // Deletion at the Start
   heading("Deletion at the Start");
   temp = head;
   head = temp->nextNode;
   delete temp;
-  transverse(head);
+  traverse(head);
 
   // Deletion at a Fixed Position
   heading("Deletion at a Fixed Position");
@@ -99,7 +99,7 @@ int main() {
     Node *target = temp->nextNode;     // the node we want to delete
     temp->nextNode = target->nextNode; // 1) skip over it
     delete target;                     // 2) then free it
-    transverse(head);
+    traverse(head);
   }
 
   return 0;
