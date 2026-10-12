@@ -7,7 +7,7 @@ struct Node {
   Node *prevNode;
 };
 
-void transverse(Node *head) {
+void traverse(Node *head) {
   cout << "NULL <-> ";
   for (Node *temp = head; temp != nullptr; temp = temp->nextNode) {
     cout << "[" << temp->Data << "] <-> ";
@@ -36,7 +36,7 @@ int main() {
   second->prevNode = head;
   third->prevNode = second;
   heading("Original Linked List");
-  transverse(head);
+  traverse(head);
 
   // Insertion at the end
   heading("Insertion at the End");
@@ -47,7 +47,7 @@ int main() {
   temp->nextNode = fourth;
   fourth->prevNode = temp;
   fourth->nextNode = nullptr;
-  transverse(head);
+  traverse(head);
 
   // Insertion at the Start
   heading("Insertion at the Start");
@@ -55,7 +55,7 @@ int main() {
   first->prevNode = nullptr;
   head->prevNode = first;
   head = first;
-  transverse(head);
+  traverse(head);
 
   // Insertion at a Fixed Position
   heading("Insertion at a Fixed Position");
@@ -74,7 +74,7 @@ int main() {
     temp->nextNode->prevNode = position;
     temp->nextNode = position;
     position->prevNode = temp;
-    transverse(head);
+    traverse(head);
   }
 
   // Deletion at the end
@@ -85,7 +85,7 @@ int main() {
   }
   temp->prevNode->nextNode = NULL;
   delete temp;
-  transverse(head);
+  traverse(head);
 
   // Deletion at the Start
   heading("Deletion at the Start");
@@ -93,7 +93,7 @@ int main() {
   temp->nextNode->prevNode = nullptr;
   head = temp->nextNode;
   delete temp;
-  transverse(head);
+  traverse(head);
 
   // Deletion at a Fixed Position
   heading("Deletion at a Fixed Position");
@@ -109,6 +109,6 @@ int main() {
     temp->nextNode->prevNode = temp->prevNode;
   delete temp;
 
-  transverse(head);
+  traverse(head);
   return 0;
 }
